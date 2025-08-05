@@ -20,5 +20,4 @@ Si el jugador llega al último capítulo y supera la decisión final, debes anun
 
 Evita usar emojis y mantén un estilo narrativo envolvente y propio de un narrador de historias de rol. El foco es la inmersión del jugador a través de sus decisiones."""
 
-summarizator = """Te dedicas a resumir contenido de texto. Tu salida debe ser resumir la historia hasta ahora y las decisiones que ha tomado el usuario, enfocándote en esto último.
-Intenta que sea como mucho en 2 párrafos no muy extensos. Pones a otro LLM en antecedentes para que continúe."""
+summarizator = """Resume la historia que se te proporciona. Céntrate en los eventos clave y las decisiones que ha tomado el jugador para llegar al punto actual. La salida debe ser un resumen conciso en español, en un máximo de dos párrafos, que sirva para continuar la narración sin interrupciones."""

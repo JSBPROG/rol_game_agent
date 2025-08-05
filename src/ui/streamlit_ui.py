@@ -138,15 +138,13 @@ class Ui:
         if actual_chapter == 1 and text_response_ai == "" and user_response == "":
 
             response = self._model.generate_response(user_message= self._create_narration_promtp(dict_row_parsed=dict_row, summary=""))
-            st.text(response)
-            
         
         else:
             sinopsis = dict_row["sinopsis"]
-            text_response_ai = f"SINOPSIS: \n {sinopsis}\n{text_response_ai}"
+            text_response_ai = f"SINOPSIS para que entiendas todo el contexto (No lo repitas, es solo como información, tampoco adelantes acontecimientos): \n {sinopsis}\n{text_response_ai}\n Resume todo esto, la decisión que ha tomado el jugador es la siguiente: "
             resume = self._summarize(text_response_ai=text_response_ai, user_response=user_response)
             response = self._model.generate_response(user_message= self._create_narration_promtp(dict_row_parsed=dict_row, summary=resume))
-            st.text(response)
+            
         self.chapter_add()#Le añadimos 1 al capítulo
         return response
             
@@ -164,8 +162,9 @@ class Ui:
         
     def _summarize(self, text_response_ai:str, user_response:str)->str:
         self._model.system_prompt=summarizator #Ahora le cambié el comportamiento
-        message = f"""{text_response_ai}\n El usuario ha tomado el camino: {user_response}"""
-        response = self._model.generate_response(user_message= message)
+        message = f"""{text_response_ai}\n El usuario ha tomado el camino: {user_response}\n Explica las consecuencias de su acción y continúa la historia desde este punto."""
+        resume = self._model.generate_response(user_message= message)
+        return resume
 
 
 
