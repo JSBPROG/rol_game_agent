@@ -25,7 +25,6 @@ interface.show_stories()
 # --- Selección de historia ---
 selected_story = interface.user_story_selection()
 if selected_story != st.session_state.story_number:
-    # Si el usuario elige una nueva historia, reinicia el estado
     st.session_state.story_number = selected_story
     st.session_state.chapter = 1
     st.session_state.user_choice = None
@@ -48,7 +47,6 @@ if st.session_state.story_number:
     choice = interface.button_choice()
     if choice:
         st.session_state.user_choice = choice
-        # Genera el siguiente capítulo basado en la elección del usuario
         st.session_state.story_text = interface.narrate(
             st.session_state.story_number,
             text_response_ai=st.session_state.story_text,

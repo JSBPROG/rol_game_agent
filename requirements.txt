@@ -1,11 +1,5 @@
-langchain
-langchain-core
-langchain_community
-langchain_openai
-langgraph
-openai
-python-dotenv
-rich
-ipython
 streamlit
-
+openai
+pandas
+python-dotenv
+ipython
